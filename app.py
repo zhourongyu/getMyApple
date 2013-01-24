@@ -26,7 +26,7 @@ class hello:
         
 
         dump_str = simplejson.dumps(res, ensure_ascii=False, encoding='utf-8')
-        print dump_str
+        print type(dump_str)
        
         out_f = open('out.dat', 'w', 0)
         out_f.write(dump_str.encode('utf-8'))
@@ -34,7 +34,7 @@ class hello:
         ##in_str = open('out.dat', 'r').read().decode('utf-8')
         ##print type(in_str)
         ddata = simplejson.loads(dump_str)
-        print ddata
+        ##print ddata
     	conn.close()
     	return render.hello(name=ddata['ProductDetails'])
 

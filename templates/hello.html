@@ -1,1 +1,60 @@
-Hello, {{name}}
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Apple Info</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- Bootstrap -->
+<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+</head>
+<body>
+<div>
+	<div>
+		<dl class="dl-horizontal">
+			<dt>设备详细信息 </dt>
+			<dd>设备名称：{{name['ZingerDeviceDetails']['设备名称']}}</dd>
+			<dd>设备类型：{{name['ZingerDeviceDetails']['设备类型']}}</dd>
+			<dd>系统版本：{{name['ZingerDeviceDetails']['系统版本']}}</dd>
+			<dd>生产日期：{{name['ZingerDeviceDetails']['生产日期']}}</dd>
+			<dd>产地：{{name['ZingerDeviceDetails']['产地']}}</dd>
+			<dd>序列号：{{name['ZingerDeviceDetails']['序列号']}}</dd>
+			<dd>ICCID：{{name['ZingerDeviceDetails']['ICCID']}}</dd>
+			<dd>Mac地址：{{name['ZingerDeviceDetails']['Mac地址']}}</dd>
+			<dd>蓝牙地址：{{name['ZingerDeviceDetails']['蓝牙地址']}}</dd>
+			<dd>IMEI/MEID：{{name['ZingerDeviceDetails']['IMEI/MEID']}} / 无</dd>
+			<dd>国家代码：{{name['ZingerDeviceDetails']['国家代码']}}</dd>
+			<dd>运营商代码：{{name['ZingerDeviceDetails']['运营商代码']}}</dd>
+			<dd>已激活：{{name['ZingerDeviceDetails']['已激活']}}</dd>
+			<dd>首次激活时间：{{name['ZingerDeviceDetails']['首次激活时间']}}</dd>
+			<dd>最后一次激活时间：{{name['ZingerDeviceDetails']['最后一次激活时间']}}</dd>
+			<dd>已解锁/时间：{{name['ZingerDeviceDetails']['已解锁/时间']}}</dd>
+			<dd>初始激活策略：{{name['ZingerDeviceDetails']['初始激活策略']}}</dd>
+			<dd>当前激活策略：{{name['ZingerDeviceDetails']['当前激活策略']}}</dd>
+			<dd>下次激活策略：{{name['ZingerDeviceDetails']['下次激活策略']}}</dd>
+		</dl>
+	</div>
+	<div class="fr right-box-main">
+		<dl class="right-box">
+			<dt>设备保修信息</dt>
+				<dd>设备名称：{{name['CoverageDetail']['设备名称']}}</dd>
+				<dd>配置信息：{{name['CoverageDetail']['配置信息']}}</dd>
+				<dd>销售地区：{{name['CoverageDetail']['销售地区']}}</dd>
+				<dd>保修状态：{{name['CoverageDetail']['保修状态']}}</dd>
+				<dd>预估购买日期：{{name['CoverageDetail']['预估购买日期']}}</dd>
+				<dd>注册购买日期：{{name['CoverageDetail']['注册购买日期']}}</dd>
+		</dl>
+		<div class="right-box">
+			<div class="title">配件更换记录</div>
+				<div>暂无配件更换记录。</div>
+			
+		</div>
+		<dl class="right-box">
+			<dt>维修历史记录</dt>
+			<dd>暂无维修历史记录。</dd>
+		</dl>
+	</div>
+	<div class="clear"></div>
+</div>
+</body>
+</html>
