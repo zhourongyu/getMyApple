@@ -1,42 +1,41 @@
 # -*- coding: utf-8 -*-
 
-import web,codecs
 import httplib, urllib, simplejson
-from web.contrib.template import render_jinja
+import sys
+from flask import Flask, request, redirect, url_for, render_template,Markup
 
-urls = ("/.*", "hello")
-app = web.application(urls, globals())
+app = Flask(__name__)
+app.config.from_object(__name__)
+@app.route('/hello')
+def hello_world():
+    return 'Hello World!'
 
+@app.route('/')
+def getId():
+    return render_template('query.html')
 
-render = render_jinja(
-        'templates',   # 设置模板路径.
-        encoding = 'utf-8', # 编码.
-    )
-
-class hello:
-    def GET(self):
-    	params = urllib.urlencode({'sn': 'c39grpwedp0n', 'key': '05D0437977124766B7AF884C0EF3BA6E'}) 
-    	headers = {"Content-type":"application/x-www-form-urlencoded","Accept":"text/plain"}
-    	conn = httplib.HTTPConnection("sn.appvv.com") 
-    	conn.request("POST", "/tools/newSnData.php", params, headers) 
-    	response = conn.getresponse()
-    	print response.status, response.reason 
-    	data = response.read().decode('utf-8')
-    	res = simplejson.loads(data)
-        
-
+@app.route('/getinfo', methods=['GET', 'POST'])
+def getinfo():
+    if request.method == 'POST' and "meid" in request.form:
+        meid = request.form["meid"]
+        params = urllib.urlencode({'sn': meid, 'key': '05D0437977124766B7AF884C0EF3BA6E'}) 
+        headers = {"Content-type":"application/x-www-form-urlencoded","Accept":"text/plain"}
+        conn = httplib.HTTPConnection("sn.appvv.com") 
+        conn.request("POST", "/tools/newSnData.php", params, headers) 
+        response = conn.getresponse()
+        print response.status, response.reason 
+        data = response.read().decode('utf-8')
+        res = simplejson.loads(data)
         dump_str = simplejson.dumps(res, ensure_ascii=False, encoding='utf-8')
-        print type(dump_str)
-       
-        out_f = open('out.dat', 'w', 0)
-        out_f.write(dump_str.encode('utf-8'))
-
-        ##in_str = open('out.dat', 'r').read().decode('utf-8')
-        ##print type(in_str)
         ddata = simplejson.loads(dump_str)
-        ##print ddata
-    	conn.close()
-    	return render.hello(name=ddata['ProductDetails'])
+
+        conn.close()
+        if ddata['ErrorCode'] == 0 :
+            print dump_str
+            return render_template('appInfo.html',info=ddata['ProductDetails'])
+        else:
+            error = "IMEI/MEID/序列号 不存在..."
+            return render_template('query.html',error=error.decode("utf-8"))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

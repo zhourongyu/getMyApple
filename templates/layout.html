@@ -1,0 +1,18 @@
+<!doctype html>
+<title>Apple Infos</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<div class=page>
+	<div class="navbar navbar-inverse">
+		<div class="navbar-inner">
+		<a class="brand" href="http://zhourongyu.info">山荣</a>
+		<ul class="nav">
+			<li class="active">
+				<a href="/"><i class="icon-home icon-white"></i>Apple Infos</a>
+			</li>
+		</ul>
+		</div>
+	</div>
+  {% block body %}{% endblock %}
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.js')}}"></script>

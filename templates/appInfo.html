@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+<div>
+	<div>
+		<dl class="dl-horizontal">
+			<dt>设备详细信息 </dt>
+			<dd>设备名称：{{info['ZingerDeviceDetails']['设备名称']}}</dd>
+			<dd>设备类型：{{info['ZingerDeviceDetails']['设备类型']|safe}}</dd>
+			<dd>系统版本：{{info['ZingerDeviceDetails']['系统版本']}}</dd>
+			<dd>生产日期：{{info['ZingerDeviceDetails']['生产日期']}}</dd>
+			<dd>产地：{{info['ZingerDeviceDetails']['产地']}}</dd>
+			<dd>序列号：{{info['ZingerDeviceDetails']['序列号']}}</dd>
+			<dd>ICCID：{{info['ZingerDeviceDetails']['ICCID']}}</dd>
+			<dd>Mac地址：{{info['ZingerDeviceDetails']['Mac地址']}}</dd>
+			<dd>蓝牙地址：{{info['ZingerDeviceDetails']['蓝牙地址']}}</dd>
+			<dd>IMEI/MEID：{{info['ZingerDeviceDetails']['IMEI/MEID']}} / 无</dd>
+			<dd>国家代码：{{info['ZingerDeviceDetails']['国家代码']}}</dd>
+			<dd>运营商代码：{{info['ZingerDeviceDetails']['运营商代码']}}</dd>
+			<dd>已激活：{{info['ZingerDeviceDetails']['已激活']}}</dd>
+			<dd>首次激活时间：{{info['ZingerDeviceDetails']['首次激活时间']}}</dd>
+			<dd>最后一次激活时间：{{info['ZingerDeviceDetails']['最后一次激活时间']}}</dd>
+			<dd>已解锁/时间：{{info['ZingerDeviceDetails']['已解锁/时间']}}</dd>
+			<dd>初始激活策略：{{info['ZingerDeviceDetails']['初始激活策略']}}</dd>
+			<dd>当前激活策略：{{info['ZingerDeviceDetails']['当前激活策略']}}</dd>
+			<dd>下次激活策略：{{info['ZingerDeviceDetails']['下次激活策略']}}</dd>
+		</dl>
+	</div>
+	<div class="fr right-box-main">
+		<dl class="right-box">
+			<dt>设备保修信息</dt>
+				<dd>设备名称：{{info['CoverageDetail']['设备名称']}}</dd>
+				<dd>配置信息：{{info['CoverageDetail']['配置信息']}}</dd>
+				<dd>销售地区：{{info['CoverageDetail']['销售地区']}}</dd>
+				<dd>保修状态：{{info['CoverageDetail']['保修状态']}}</dd>
+				<dd>预估购买日期：{{info['CoverageDetail']['预估购买日期']}}</dd>
+				<dd>注册购买日期：{{info['CoverageDetail']['注册购买日期']}}</dd>
+		</dl>
+		<div class="right-box">
+			<div class="title">配件更换记录</div>
+				<div>暂无配件更换记录。</div>
+			
+		</div>
+		<dl class="right-box">
+			<dt>维修历史记录</dt>
+			<dd>暂无维修历史记录。</dd>
+		</dl>
+	</div>
+	<div class="clear"></div>
+</div>
+{% endblock %}

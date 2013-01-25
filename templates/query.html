@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<center> 
+ <form class="form-search" action="{{ url_for('getinfo') }}" method=post>
+ 	
+<legend>请输入你的IMEI/MEID/序列号</legend>
+{% if error %}
+<div class="alert alert-error">
+<strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+
+
+<div class="input-append">
+	<input class="span3 search-query" type="text" name="meid" placeholder="Your IMEI/MEID/序列号...">
+	<button type="submit" class="btn">Search</button>
+</div>
+
+</br>
+<span class="label label-inverse">Example: c39grpwedp0n</span>
+
+
+
+</form>
+</center>   
+{% endblock %}
+
