@@ -1,50 +1,137 @@
 {% extends "layout.html" %}
 {% block body %}
-<div>
-	<div>
-		<dl class="dl-horizontal">
-			<dt>设备详细信息 </dt>
-			<dd>设备名称：{{info['ZingerDeviceDetails']['设备名称']}}</dd>
-			<dd>设备类型：{{info['ZingerDeviceDetails']['设备类型']|safe}}</dd>
-			<dd>系统版本：{{info['ZingerDeviceDetails']['系统版本']}}</dd>
-			<dd>生产日期：{{info['ZingerDeviceDetails']['生产日期']}}</dd>
-			<dd>产地：{{info['ZingerDeviceDetails']['产地']}}</dd>
-			<dd>序列号：{{info['ZingerDeviceDetails']['序列号']}}</dd>
-			<dd>ICCID：{{info['ZingerDeviceDetails']['ICCID']}}</dd>
-			<dd>Mac地址：{{info['ZingerDeviceDetails']['Mac地址']}}</dd>
-			<dd>蓝牙地址：{{info['ZingerDeviceDetails']['蓝牙地址']}}</dd>
-			<dd>IMEI/MEID：{{info['ZingerDeviceDetails']['IMEI/MEID']}} / 无</dd>
-			<dd>国家代码：{{info['ZingerDeviceDetails']['国家代码']}}</dd>
-			<dd>运营商代码：{{info['ZingerDeviceDetails']['运营商代码']}}</dd>
-			<dd>已激活：{{info['ZingerDeviceDetails']['已激活']}}</dd>
-			<dd>首次激活时间：{{info['ZingerDeviceDetails']['首次激活时间']}}</dd>
-			<dd>最后一次激活时间：{{info['ZingerDeviceDetails']['最后一次激活时间']}}</dd>
-			<dd>已解锁/时间：{{info['ZingerDeviceDetails']['已解锁/时间']}}</dd>
-			<dd>初始激活策略：{{info['ZingerDeviceDetails']['初始激活策略']}}</dd>
-			<dd>当前激活策略：{{info['ZingerDeviceDetails']['当前激活策略']}}</dd>
-			<dd>下次激活策略：{{info['ZingerDeviceDetails']['下次激活策略']}}</dd>
-		</dl>
+<div class="container-fluid">
+	 <div class="row-fluid">
+
+	<div class="fr right-box-main span4">
+		<table class="table table-hover table-condensed">
+			<dt><strong>设备详细信息 </strong></dt>
+			<tr>
+				<td>设备名称：</td>
+				<td>{{info['ZingerDeviceDetails']['设备名称']}}</td>
+			</tr>
+			<tr>
+				<td>设备类型：</td>
+				<td>{{info['ZingerDeviceDetails']['设备类型']|safe}}</td>
+			</tr>
+			<tr>
+				<td>系统版本：</td>
+				<td>{{info['ZingerDeviceDetails']['系统版本']}}</td>
+			</tr>
+			<tr>
+				<td>生产日期：</td>
+				<td>{{info['ZingerDeviceDetails']['生产日期']}}</td>
+			</tr>
+			<tr>
+				<td>产地：</td>
+				<td>{{info['ZingerDeviceDetails']['产地']}}</td>
+			</tr>
+			<tr>
+				<td>序列号：</td>
+				<td>{{info['ZingerDeviceDetails']['序列号']}}</td>
+			</tr>
+			{% if info['ZingerDeviceDetails']['手机号码(FaceTime激活)'] %}
+			<tr>
+				<td>手机号码(FaceTime激活):</td>
+				<td>{{info['ZingerDeviceDetails']['手机号码(FaceTime激活)']}}</td>
+			</tr>
+			{% endif %}
+			<tr>
+				<td>ICCID：</td>
+				<td>{{info['ZingerDeviceDetails']['ICCID']}}</td>
+			</tr>
+			<tr>
+				<td>Mac地址：</td>
+				<td>{{info['ZingerDeviceDetails']['Mac地址']}}</td>
+			</tr>
+			<tr>
+				<td>蓝牙地址：</td>
+				<td>{{info['ZingerDeviceDetails']['蓝牙地址']}}</td>
+			</tr>
+			<tr>
+				<td>IMEI/MEID：</td>
+				<td>{{info['ZingerDeviceDetails']['IMEI/MEID']}}</td>
+			</tr>
+			<tr>
+				<td>国家代码：</td>
+				<td>{{info['ZingerDeviceDetails']['国家代码']}}</td>
+			</tr>
+			<tr>
+				<td>运营商代码：</td>
+				<td>{{info['ZingerDeviceDetails']['运营商代码']}}</td>
+			</tr>
+			<tr>
+				<td>已激活：</td>
+				<td>{{info['ZingerDeviceDetails']['已激活']}}</td>
+			</tr>
+			<tr>
+				<td>首次激活时间：</td>
+				<td>{{info['ZingerDeviceDetails']['首次激活时间']}}</td>
+			</tr>
+			<tr>
+				<td>最后一次激活时间：</td>
+				<td>{{info['ZingerDeviceDetails']['最后一次激活时间']}}</td>
+			</tr>
+			<tr>
+				<td>已解锁/时间：</td>
+				<td>{{info['ZingerDeviceDetails']['已解锁/时间']}}</td>
+			</tr>
+			<tr>
+				<td>初始激活策略：</td>
+				<td>{{info['ZingerDeviceDetails']['初始激活策略']}}</td>
+			</tr>
+			<tr>
+				<td>当前激活策略：</td>
+				<td>{{info['ZingerDeviceDetails']['当前激活策略']}}</td>
+			</tr>
+			<tr>
+				<td>下次激活策略：</td>
+				<td>{{info['ZingerDeviceDetails']['下次激活策略']}}</td>
+			</tr>
+		</table>
 	</div>
-	<div class="fr right-box-main">
-		<dl class="right-box">
+	{% if info['CoverageDetail'] %}
+	<div class="fr right-box-main span6">
+		<table class="table table-hover table-condensed">
 			<dt>设备保修信息</dt>
-				<dd>设备名称：{{info['CoverageDetail']['设备名称']}}</dd>
-				<dd>配置信息：{{info['CoverageDetail']['配置信息']}}</dd>
-				<dd>销售地区：{{info['CoverageDetail']['销售地区']}}</dd>
-				<dd>保修状态：{{info['CoverageDetail']['保修状态']}}</dd>
-				<dd>预估购买日期：{{info['CoverageDetail']['预估购买日期']}}</dd>
-				<dd>注册购买日期：{{info['CoverageDetail']['注册购买日期']}}</dd>
-		</dl>
+				<tr>
+					<td>设备名称：</td>
+					<td>{{info['CoverageDetail']['设备名称']}}</td>
+				</tr>
+				<tr>
+					<td>配置信息：</td>
+					<td>{{info['CoverageDetail']['配置信息']}}</td>
+				</tr>
+				<tr>
+					<td>销售地区：</td>
+					<td>{{info['CoverageDetail']['销售地区']}}</td>
+				</tr>
+				<tr>
+					<td>保修状态：</td>
+					<td>{{info['CoverageDetail']['保修状态']}}</td>
+				</tr>
+				<tr>
+					<td>预估购买日期：</td>
+					<td>{{info['CoverageDetail']['预估购买日期']}}</td>
+				</tr>
+				<tr>
+					<td>注册购买日期：</td>
+					<td>{{info['CoverageDetail']['注册购买日期']}}</td>
+				</tr>
+		</table>
+
 		<div class="right-box">
-			<div class="title">配件更换记录</div>
-				<div>暂无配件更换记录。</div>
-			
+			<dt>配件更换记录</dt>
+				<dd>暂无配件更换记录。</dd>
 		</div>
 		<dl class="right-box">
 			<dt>维修历史记录</dt>
 			<dd>暂无维修历史记录。</dd>
 		</dl>
 	</div>
+	{% endif %}
+</div>
+
 	<div class="clear"></div>
 </div>
 {% endblock %}
